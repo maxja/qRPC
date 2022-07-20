@@ -1,2 +1,2 @@
 # qRPC
-Protobuf gRPC like plugin for queues
+Protobuf gRPC-like plugin and client-server but for queues
