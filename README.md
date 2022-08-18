@@ -56,5 +56,10 @@ Basically, it can be achieved by filling reply-to message header.
 
 There are quite a few stages to accomplish.
 Beacuse of we use gRPC as a reference point, the esiest part is to implement 
-dummy client-server, and then change adopt it for message broker, one at first, 
+simple echo client-server, and then change adopt it for message broker, one at first, 
 and next the rest.
+
+### Stages
+
+1. Implement gRPC based Echo Client-Server;
+2. Identify abstraction complexity to implement Client and Server.
