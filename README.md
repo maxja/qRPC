@@ -67,5 +67,41 @@ blocks to support same functionality.
 
 ### Stages
 
-1. [x] Reference exmaples from gRPC project and remove go mod's replace; <br />
+#### Reference exmaples from gRPC project and remove go mod's replace.
+
 Examples folder contains entrypoint file to run them at once `exmaples_test.sh`. 
+
+First example that runs, is Hello World. 
+
+Server application contains `server` struct declared with embedement of 
+pre-generated structure from protofile, method `SayHello` within `server` 
+receiver, and next three important lines:
+```golang
+s := grpc.NewServer()
+pb.RegisterGreeterServer(s, &server{})
+s.Serve(lis)
+```
+**TODO:**
+
+1. [ ] Initialization of a server instance `grpc.NewServer` should be mocked 
+with analogous `grpc.NewServer`;
+2. [ ] Server instance registration with defined `server` struct via protobuf 
+provided method. For that we have to mimic original server interface that 
+`RegisterGreeterServer` awaits;
+3. [ ] Define our own `Serve` method;
+
+Client application establish tcp connection and pass it as an initialization 
+argument to the pre-generated from protobuf Client structure, then invoke it's 
+method.
+
+```golang
+conn, err := grpc.Dial(*addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+c := pb.NewGreeterClient(conn)
+r, err := c.SayHello(ctx, &pb.HelloRequest{Name: *name})
+```
+
+For our luck, `NewGreetClient` consumes interface, so we can mock it.
+
+**TODO:**
+
+4. [ ] Implement client that adopt required interface.
