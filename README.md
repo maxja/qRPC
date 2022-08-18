@@ -59,6 +59,9 @@ Beacuse of we use gRPC as a reference point, the esiest part is to implement
 simple echo client-server, and then change adopt it for message broker, one at first, 
 and next the rest.
 
+The key point, is to use generated code produced by _protoc-gen-go-grpc_ as a 
+starting point. It gives enough of abstraction to begin work with.
+
 ### Stages
 
 1. Implement gRPC based Echo Client-Server;
