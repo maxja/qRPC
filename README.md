@@ -56,13 +56,16 @@ Basically, it can be achieved by filling reply-to message header.
 
 There are quite a few stages to accomplish.
 Beacuse of we use gRPC as a reference point, the esiest part is to implement 
-simple echo client-server, and then change adopt it for message broker, one at first, 
+simple client-server, and then change adopt it for message broker, one at first, 
 and next the rest.
 
 The key point, is to use generated code produced by _protoc-gen-go-grpc_ as a 
 starting point. It gives enough of abstraction to begin work with.
 
+Good start will be to use example from gRPC project and build-up new building 
+blocks to support same functionality.
+
 ### Stages
 
-1. Implement gRPC based Echo Client-Server;
-2. Identify abstraction complexity to implement Client and Server.
+1. [x] Reference exmaples from gRPC project and remove go mod's replace; <br />
+Examples folder contains entrypoint file to run them at once `exmaples_test.sh`. 
