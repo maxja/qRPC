@@ -5,7 +5,8 @@
 This is an experimental library that try to adopt ideas from gRPC request 
 handling and extend it to the Message Broker world.
 
-> !Warning! Do not use it in production.
+> **!!! Warning !!!** <br/>
+> Do not use it in production.
 
 Is an adoption of a gRPC approach to bind methods and handle requests incoming 
 via Message Queue rather than http/2 that originated in gRPC.
@@ -24,13 +25,14 @@ future, they might not be compatible with the rest of your contracts.
 
 Or you might try to handle incoming requests from Message Queue.
 
-## Can it be achieved?
+## Is it achivable?
 
 Maybe. Soon we will find out.
 
 There are several artefacts that determine what RPC is, a few of them:
 
-- Attribute that helps to identify **Procedure** that should handle particular request;
+- Attribute that helps to identify **Procedure** that should handle particular 
+request;
 - Attribute that helps to determine one request from another;
 - Ability to reply on determined request;
 - Attribute/-s that represents incoming arguments.
@@ -49,3 +51,10 @@ There are several artefacts that determine what RPC is, a few of them:
 [RabbitMQ documentation](https://www.rabbitmq.com/direct-reply-to.html) describes 
 Reply-to approach to fulfill the RPC scenario. 
 Basically, it can be achieved by filling reply-to message header.
+
+## Implementation
+
+There are quite a few stages to accomplish.
+Beacuse of we use gRPC as a reference point, the esiest part is to implement 
+dummy client-server, and then change adopt it for message broker, one at first, 
+and next the rest.
